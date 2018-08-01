@@ -50,12 +50,13 @@
     </div>
   </div>
 
-  <div class="form-group">
-    <div class="col-md-10 col-sm-12 col-xs-12">
-      <%= f.file_field :avatars, class: "btn btn-default", multiple: true %>
+  <% unless Rails.env == "production" %>
+    <div class="form-group">
+      <div class="col-md-10 col-sm-12 col-xs-12">
+        <%= f.file_field :avatars, class: "btn btn-default", multiple: true %>
+      </div>
     </div>
-  </div>
-
+  <% end %>
 
   <div class="form-group">
     <div class="col-md-10 col-sm-12 col-xs-12">
