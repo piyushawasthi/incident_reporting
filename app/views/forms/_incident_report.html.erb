@@ -52,9 +52,17 @@
 
   <div class="form-group">
     <div class="col-md-10 col-sm-12 col-xs-12">
+      <%= f.file_field :avatars, class: "btn btn-default", multiple: true %>
+    </div>
+  </div>
+
+
+  <div class="form-group">
+    <div class="col-md-10 col-sm-12 col-xs-12">
       <button type="button" id="dd" class="btn btn-link">Add incident details</button>
     </div>
   </div>
+
 
   <%= f.submit "Submit", class: "btn btn-default btn-primary" %>  
 <% end %>

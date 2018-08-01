@@ -1,4 +1,8 @@
 class Incident < ActiveRecord::Base
+
+	mount_uploaders :avatars, AvatarUploader
+  	serialize :avatars, JSON 
+  	
 	belongs_to :school
 	belongs_to :location, required: false
 	belongs_to :incident_type, required: false

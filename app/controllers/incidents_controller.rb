@@ -18,6 +18,6 @@ class IncidentsController < ApplicationController
   private
 
   	def incident_params
-      params.require(:incident).permit(:school_id, :people_involved, :observers, :description, :observed_on, :incident_type_id, :location_id, user_attributes: [:name, :contact, :role])
+      params.require(:incident).permit(:school_id, :people_involved, :observers, :description, :observed_on, :incident_type_id, :location_id, user_attributes: [:name, :contact, :role], avatars: [])
     end
 end
