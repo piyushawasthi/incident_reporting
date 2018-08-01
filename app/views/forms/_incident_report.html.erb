@@ -1,0 +1,78 @@
+<%= form_for @incident, :html => {:class => "form-horizontal center"} do |f| %>
+  <%= f.hidden_field :school_id, :value => @school.id %>
+  
+  <h3><%= f.label :school_name, @school.name, class: "col-md-12 control-label text-large" %></h3>
+  <h6><%= f.label :name, "Incident Reporting Page", class: "col-md-12 control-label text-large" %></h6>
+  <div class="form-group">
+  </div>
+  <div class="form-group">
+  </div>
+  
+  <div class="details">
+    <div class="form-group">
+      <%= f.label :type_of_incident, "Incident Type", class: "col-md-2 control-label" %>
+      <%= f.collection_select :incident_type_id, incident_types, :id, :name, include_blank: "Please select", class: "col-md-4 selectpicker" %>
+    </div>
+    
+    <div class="form-group">
+      <%= render partial: "forms/user_details", locals: {f: f} %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :people_involved, "People Involved", class: "col-md-12 control-label" %>
+      <div class="col-md-8">
+        <%= f.text_field :people_involved, class: "col-md-12 control-field", placeholder: "Name and other details of people involved (student, teacher, staff, parent, grade level)" %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :observers, "Observers", class: "col-md-12 control-label" %>
+      <div class="col-md-8">
+        <%= f.text_field :observers, class: "col-md-12 control-field", placeholder: "Name and details" %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :observed_on, "Observed on:", class: "col-md-2 control-label" %>
+      <%= f.datetime_select :observed_on %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :location, "Location:", class: "col-md-2 control-label" %>
+      <%= f.collection_select :location_id, locations, :id, :place, include_blank: "Please select" %>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :description, "Describe Issue/Incident", class: "col-md-12 control-label" %>
+    <div class="col-md-8">
+      <%= f.text_area :description, cols: 5, rows: 5, class: "col-md-12 control-field" %></h3>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-md-10 col-sm-12 col-xs-12">
+      <button type="button" id="dd" class="btn btn-link">Add incident details</button>
+    </div>
+  </div>
+
+  <%= f.submit "Submit", class: "btn btn-default btn-primary" %>  
+<% end %>
+
+<script type="text/javascript">
+  window.onload = function() {
+    $(".details").css("display", "none");
+  };
+  var flag = true;
+  $('#dd').click(function() {
+    //This
+    $('.details').toggle();
+    $('#dd').html(flag == false ? "Remove incident details" : 'Add incident details')
+    flag = !flag;
+    //OR this
+    $(".details").css("display", flag ? "block" : "none");
+  });
+  $(".alert" ).fadeOut(3000);
+  $(".alert-success" ).fadeOut(3000);
+  $(".alert-danger" ).fadeOut(3000);
+</script>

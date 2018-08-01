@@ -1,0 +1,23 @@
+<fieldset class="scheduler-border">
+  <legend class="scheduler-border">Your Details</legend>
+    <%= f.fields_for :user_attributes do |ff| %>
+    <div class="form-group">
+      <%= ff.label :name, "Name", class: "col-md-12 control-label" %>
+      <div class="col-md-8">
+        <%= ff.text_field :name, class: "col-md-12 control-field", placeholder: "Anonymous" %></h3>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= ff.label :contact, "Contact", class: "col-md-12 control-label" %>
+      <div class="col-md-8">
+        <%= ff.text_field :contact, class: "col-md-12 control-field", placeholder: "Please enter email or phone number" %></h3>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= ff.label :role, "Role:", class: "col-md-2 control-label" %>
+      <div class="col-md-8">
+        <%= ff.collection_select :role, user_roles, :to_s, :to_s, include_blank: "Please select" %>
+      </div>
+    </div>
+  <%- end %>
+</fieldset>
