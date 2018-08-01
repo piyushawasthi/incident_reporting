@@ -5,6 +5,5 @@ class CreateIncidentTypes < ActiveRecord::Migration
 
       t.timestamps null: false
     end
-    add_index :incident_types, :types
   end
 end
